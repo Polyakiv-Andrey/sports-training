@@ -18,5 +18,4 @@ class AthleteAdmin(UserAdmin):
         ("Additional info", {"fields": ("first_name", "last_name", "photo", "experience")}),
     )
 
-
 admin.site.register(Training)

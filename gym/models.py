@@ -3,8 +3,8 @@ from django.db import models
 
 
 class Athlete(AbstractUser):
-    photo = models.ImageField(upload_to="photos")
-    experience = models.TextField()
+    photo = models.ImageField(upload_to="photos", blank=True, null=True)
+    experience = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ["username"]

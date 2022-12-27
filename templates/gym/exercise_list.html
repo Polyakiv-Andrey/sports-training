@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Exercises</h1>
+  <h1>
+    Exercises
+  <a style="float: right" href="{% url 'gym:exercise-create' %}">+</a>
+  </h1>
   {% if exercise_list %}
     {% for exercise in exercise_list %}
       <ul>

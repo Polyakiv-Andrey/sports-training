@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from gym.models import Athlete, Exercise, Training
@@ -38,6 +39,12 @@ class ExerciseListView(LoginRequiredMixin, generic.ListView):
 
 class ExerciseDetailView(LoginRequiredMixin, generic.DetailView):
     model = Exercise
+
+
+class ExerciseCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Exercise
+    fields = "__all__"
+    success_url = reverse_lazy("gym:athletes-list")
 
 
 class TrainingListView(LoginRequiredMixin, generic.ListView):

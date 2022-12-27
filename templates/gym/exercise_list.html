@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Exercises</h1>
+  {% if exercise_list %}
+    {% for exercise in exercise_list %}
+      <ul>
+        <li><a href="{% url 'gym:exercise-detail' pk=exercise.id %}">{{ exercise.exercise_name }}</a> creator: {{ exercise.exercise_creator }}</li>
+      </ul>
+    {% endfor %}
+  {% else %}
+    <p>Unfortunately exercises have not added yet</p>
+  {% endif %}
+{% endblock %}

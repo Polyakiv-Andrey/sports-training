@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Athlete: {{ athlete }}</h1>
+  {% if athlete.experience %}
+    <p>Experience: {{ athlete.experience }}</p>
+  {% endif %}
+  {% if athlete.photo %}
+    <img alt="ath-photo" src="{{ athlete.photo.url }}">
+  {% endif %}
+  <div class="ml-3">
+  <h3>Training from {{ athlete }}</h3>
+  {% for training in athlete.training_set.all %}
+    <ul>
+      <li>
+        <p><strong>{{ training.training_name }}</strong></p>
+        <p>{{ training.training_description }}</p>
+        {% for exercise in training.exercises.all %}
+          <ul>
+            <li>{{ exercise.exercise_name }}</li>
+          </ul>
+        {% endfor %}
+      </li>
+    </ul>
+  {% endfor %}
+  </div>
+   <div class="ml-3">
+  <h3>Exercise from {{ athlete }}</h3>
+  {% for exercise in athlete.exercise_set.all %}
+    <ul>
+      <li>
+        <p><strong>{{ exercise.exercise_name }}</strong></p>
+        <p>{{ exercise.description }}</p>
+      </li>
+    </ul>
+  {% endfor %}
+  </div>
+{% endblock %}

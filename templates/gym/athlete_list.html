@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Athletes</h1>
+  {% if athlete_list %}
+    {% for athlete in athlete_list %}
+      <ul>
+        <li><a href="{% url 'gym:athletes-detail' pk=athlete.pk %}"> {{ athlete }} </a></li>
+      </ul>
+    {% endfor %}
+  {% else %}
+    <p>Unfortunately athletes have not registered yet</p>
+  {% endif %}
+{% endblock %}

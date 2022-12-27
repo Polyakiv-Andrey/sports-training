@@ -10,7 +10,10 @@ class Athlete(AbstractUser):
         ordering = ["username"]
 
     def __str__(self):
-        return f"{self.username} ({self.first_name} {self.last_name})"
+        if self.first_name:
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return f"{self.username}"
 
 
 class Exercise(models.Model):
@@ -29,6 +32,7 @@ class Exercise(models.Model):
 class Training(models.Model):
     training_creator = models.ForeignKey(Athlete, on_delete=models.CASCADE)
     training_name = models.CharField(max_length=255)
+    training_description = models.TextField(default="It is the best training in the world")
     exercises = models.ManyToManyField(Exercise)
 
     def __str__(self):

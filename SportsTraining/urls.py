@@ -20,7 +20,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gym.urls', namespace='gym')),
+    path('gym/', include('gym.urls', namespace='gym')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

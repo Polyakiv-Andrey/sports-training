@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1><strong>Exercise:</strong> {{ exercise.exercise_name }}</h1>
+  <p><strong>Description:</strong>{{ exercise.description }}</p>
+  <img src="{{ exercise.picture.url }}" alt="ex">
+  <h3>Author: {{ exercise.exercise_creator }}</h3>
+{% endblock %}

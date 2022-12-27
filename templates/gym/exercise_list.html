@@ -5,7 +5,7 @@
   {% if exercise_list %}
     {% for exercise in exercise_list %}
       <ul>
-        <li><a href="#">{{ exercise.exercise_name }}</a> creator: {{ exercise.exercise_creator }}</li>
+        <li><a href="{% url 'gym:exercise-detail' pk=exercise.id %}">{{ exercise.exercise_name }}</a> creator: {{ exercise.exercise_creator }}</li>
       </ul>
     {% endfor %}
   {% else %}

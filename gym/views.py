@@ -31,6 +31,10 @@ class ExerciseListView(generic.ListView):
     queryset = Exercise.objects.all().select_related("exercise_creator")
 
 
+class ExerciseDetailView(generic.DetailView):
+    model = Exercise
+
+
 class TrainingListView(generic.ListView):
     model = Training
     queryset = Training.objects.all().select_related("training_creator")

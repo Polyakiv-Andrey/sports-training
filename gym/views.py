@@ -20,3 +20,7 @@ def index(request):
 
 class AthleteListView(generic.ListView):
     model = Athlete
+
+
+class ExerciseListView(generic.ListView):
+    model = Exercise

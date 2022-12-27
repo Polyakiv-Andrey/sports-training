@@ -4,7 +4,8 @@ from gym.views import *
 
 urlpatterns = [
     path("", index, name="index"),
-    path("athletes/", AthleteListView.as_view(), name="athletes-list")
+    path("athletes/", AthleteListView.as_view(), name="athletes-list"),
+    path("exercise/", ExerciseListView.as_view(), name="exercise-list")
 ]
 
 

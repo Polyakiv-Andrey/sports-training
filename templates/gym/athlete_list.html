@@ -5,7 +5,7 @@
   {% if athlete_list %}
     {% for athlete in athlete_list %}
       <ul>
-        <li><a href="#"> {{ athlete }} </a></li>
+        <li><a href="{% url 'gym:athletes-detail' pk=athlete.pk %}"> {{ athlete }} </a></li>
       </ul>
     {% endfor %}
   {% else %}

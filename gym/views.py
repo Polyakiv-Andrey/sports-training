@@ -22,9 +22,15 @@ class AthleteListView(generic.ListView):
     model = Athlete
 
 
+class AthleteDetailView(generic.DetailView):
+    model = Athlete
+
+
 class ExerciseListView(generic.ListView):
     model = Exercise
+    queryset = Exercise.objects.all().select_related("exercise_creator")
 
 
 class TrainingListView(generic.ListView):
     model = Training
+    queryset = Training.objects.all().select_related("training_creator")

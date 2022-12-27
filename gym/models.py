@@ -10,7 +10,10 @@ class Athlete(AbstractUser):
         ordering = ["username"]
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        if self.first_name:
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return f"{self.username}"
 
 
 class Exercise(models.Model):

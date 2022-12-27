@@ -55,3 +55,9 @@ class TrainingListView(LoginRequiredMixin, generic.ListView):
 
 class TrainingDetailView(LoginRequiredMixin, generic.DetailView):
     model = Training
+
+
+class TrainingCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Training
+    fields = "__all__"
+    success_url = reverse_lazy("gym:training-list")

@@ -24,3 +24,7 @@ class AthleteListView(generic.ListView):
 
 class ExerciseListView(generic.ListView):
     model = Exercise
+
+
+class TrainingListView(generic.ListView):
+    model = Training

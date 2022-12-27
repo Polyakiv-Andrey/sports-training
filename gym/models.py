@@ -29,6 +29,7 @@ class Exercise(models.Model):
 class Training(models.Model):
     training_creator = models.ForeignKey(Athlete, on_delete=models.CASCADE)
     training_name = models.CharField(max_length=255)
+    training_description = models.TextField(default="It is the best training in the world")
     exercises = models.ManyToManyField(Exercise)
 
     def __str__(self):

@@ -9,6 +9,7 @@ urlpatterns = [
     path("exercise/", ExerciseListView.as_view(), name="exercise-list"),
     path("exercise/<int:pk>/", ExerciseDetailView.as_view(), name="exercise-detail"),
     path("training/", TrainingListView.as_view(), name="training-list"),
+    path("training/<int:pk>/", TrainingDetailView.as_view(), name="training-detail"),
 ]
 
 

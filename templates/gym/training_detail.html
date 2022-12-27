@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="ml-3">
+  <h3>{{ training.training_name }}</h3>
+  <p>{{ training.training_description }}</p>
+  {% for exercise in training.exercises.all %}
+    <ul>
+      <li>
+        <p><strong>{{ exercise.exercise_name }}</strong></p>
+        <p>{{ exercise.description }}</p>
+         <img alt="ath-photo" src="{{ exercise.picture.url }}">
+      </li>
+    </ul>
+   {% endfor %}
+  </div>
+{% endblock %}

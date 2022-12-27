@@ -20,6 +20,7 @@ def index(request):
 
 class AthleteListView(generic.ListView):
     model = Athlete
+    paginate_by = 5
 
 
 class AthleteDetailView(generic.DetailView):
@@ -29,6 +30,7 @@ class AthleteDetailView(generic.DetailView):
 class ExerciseListView(generic.ListView):
     model = Exercise
     queryset = Exercise.objects.all().select_related("exercise_creator")
+    paginate_by = 5
 
 
 class ExerciseDetailView(generic.DetailView):
@@ -38,6 +40,7 @@ class ExerciseDetailView(generic.DetailView):
 class TrainingListView(generic.ListView):
     model = Training
     queryset = Training.objects.all().select_related("training_creator")
+    paginate_by = 5
 
 
 class TrainingDetailView(generic.DetailView):

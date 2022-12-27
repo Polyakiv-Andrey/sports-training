@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 from gym.models import Athlete, Exercise, Training
 
@@ -15,3 +16,7 @@ def index(request):
         "num_trainings": num_trainings
     }
     return render(request, "gym/index.html", context=context)
+
+
+class AthleteListView(generic.ListView):
+    model = Athlete

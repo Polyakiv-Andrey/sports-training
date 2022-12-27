@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Exercises</h1>
+  <h1>
+    Exercises
+  <a style="float: right" href="{% url 'gym:exercise-create' %}">+</a>
+  </h1>
   {% if exercise_list %}
     {% for exercise in exercise_list %}
       <ul>
-        <li><a href="{% url 'gym:exercise-detail' pk=exercise.id %}">{{ exercise.exercise_name }}</a> creator: {{ exercise.exercise_creator }}</li>
+        <li>
+          <a href="{% url 'gym:exercise-detail' pk=exercise.id %}">
+            {{ exercise.exercise_name }}
+          </a>
+          creator: {{ exercise.exercise_creator }}
+          <a class="btn btn-success" href="{% url 'gym:exercise-update' pk=exercise.id %}">
+            Update
+          </a>
+          <a class="btn btn-danger" href="{% url 'gym:exercise-delete' pk=exercise.id %}">
+            Delete
+          </a>
+        </li>
       </ul>
     {% endfor %}
   {% else %}

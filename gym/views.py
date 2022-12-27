@@ -1,9 +1,13 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from gym.models import Athlete, Exercise, Training
 
 
+@login_required
 def index(request):
 
     num_athletes = Athlete.objects.count()
@@ -18,23 +22,54 @@ def index(request):
     return render(request, "gym/index.html", context=context)
 
 
-class AthleteListView(generic.ListView):
+class AthleteListView(LoginRequiredMixin, generic.ListView):
+    model = Athlete
+    paginate_by = 5
+
+
+class AthleteDetailView(LoginRequiredMixin, generic.DetailView):
     model = Athlete
 
 
-class AthleteDetailView(generic.DetailView):
-    model = Athlete
-
-
-class ExerciseListView(generic.ListView):
+class ExerciseListView(LoginRequiredMixin, generic.ListView):
     model = Exercise
     queryset = Exercise.objects.all().select_related("exercise_creator")
+    paginate_by = 5
 
 
-class ExerciseDetailView(generic.DetailView):
+class ExerciseDetailView(LoginRequiredMixin, generic.DetailView):
     model = Exercise
 
 
-class TrainingListView(generic.ListView):
+class ExerciseCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Exercise
+    fields = "__all__"
+    success_url = reverse_lazy("gym:exercise-list")
+
+
+class ExerciseUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Exercise
+    fields = "__all__"
+    success_url = reverse_lazy("gym:exercise-list")
+
+
+class ExerciseDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Exercise
+    template_name = "gym/exercise_delete_confirm.html"
+    success_url = reverse_lazy("gym:exercise-list")
+
+
+class TrainingListView(LoginRequiredMixin, generic.ListView):
     model = Training
     queryset = Training.objects.all().select_related("training_creator")
+    paginate_by = 5
+
+
+class TrainingDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Training
+
+
+class TrainingCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Training
+    fields = "__all__"
+    success_url = reverse_lazy("gym:training-list")

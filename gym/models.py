@@ -35,6 +35,9 @@ class Training(models.Model):
     training_description = models.TextField(default="It is the best training in the world")
     exercises = models.ManyToManyField(Exercise)
 
+    class Meta:
+        ordering = ["training_name"]
+
     def __str__(self):
         return f"{self.training_name}"
 

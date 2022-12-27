@@ -44,7 +44,19 @@ class ExerciseDetailView(LoginRequiredMixin, generic.DetailView):
 class ExerciseCreateView(LoginRequiredMixin, generic.CreateView):
     model = Exercise
     fields = "__all__"
-    success_url = reverse_lazy("gym:athletes-list")
+    success_url = reverse_lazy("gym:exercise-list")
+
+
+class ExerciseUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Exercise
+    fields = "__all__"
+    success_url = reverse_lazy("gym:exercise-list")
+
+
+class ExerciseDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Exercise
+    template_name = "gym/exercise_delete_confirm.html"
+    success_url = reverse_lazy("gym:exercise-list")
 
 
 class TrainingListView(LoginRequiredMixin, generic.ListView):

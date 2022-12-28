@@ -13,12 +13,14 @@
             {{ exercise.exercise_name }}
           </a>
           creator: {{ exercise.exercise_creator }}
+          {% if exercise.exercise_creator.id == user.id %}
           <a class="btn btn-success" href="{% url 'gym:exercise-update' pk=exercise.id %}">
             Update
           </a>
           <a class="btn btn-danger" href="{% url 'gym:exercise-delete' pk=exercise.id %}">
             Delete
           </a>
+          {% endif %}
         </li>
       </ul>
     {% endfor %}

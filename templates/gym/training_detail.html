@@ -4,12 +4,14 @@
   <div class="ml-3">
   <h3>
     {{ training.training_name }}
+     {% if training.training_creator.id == user.id %}
     <a style="float: right" class="btn btn-success" href="{% url 'gym:training-update' pk=training.id %}">
       Update
     </a>
     <a style="float: right" class="btn btn-danger" href="{% url 'gym:training-delete' pk=training.id %}">
       Delete
     </a>
+    {% endif %}
   </h3>
   <p>{{ training.training_description }}</p>
   {% for exercise in training.exercises.all %}

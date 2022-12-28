@@ -45,6 +45,12 @@ class AthleteUpdateView(generic.UpdateView):
     template_name = "gym/athlete_form.html"
 
 
+class AthleteDeleteView(generic.DeleteView):
+    model = Athlete
+    success_url = reverse_lazy("login")
+    template_name = "gym/athlete_delete_confirm.html"
+
+
 class ExerciseListView(LoginRequiredMixin, generic.ListView):
     model = Exercise
     queryset = Exercise.objects.all().select_related("exercise_creator")

@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Athlete: {{ athlete }}</h1>
+  <h1>
+    Athlete: {{ athlete }}
+  {% if user.id == athlete.id %}
+    <a href="{% url 'gym:athletes-update' pk=athlete.id %}">
+    Change profile
+    </a>
+  {% endif %}
+  </h1>
   {% if athlete.experience %}
     <p>Experience: {{ athlete.experience }}</p>
   {% endif %}

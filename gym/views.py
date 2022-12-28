@@ -38,6 +38,13 @@ class AthleteCreateView(generic.CreateView):
     template_name = "gym/athlete_form.html"
 
 
+class AthleteUpdateView(generic.UpdateView):
+    model = Athlete
+    fields = ["first_name", "last_name", "email", "photo", "experience"]
+    success_url = reverse_lazy("gym:athletes-list")
+    template_name = "gym/athlete_form.html"
+
+
 class ExerciseListView(LoginRequiredMixin, generic.ListView):
     model = Exercise
     queryset = Exercise.objects.all().select_related("exercise_creator")

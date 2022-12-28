@@ -98,8 +98,25 @@ class ExerciseDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class TrainingListView(LoginRequiredMixin, generic.ListView):
     model = Training
-    queryset = Training.objects.all().select_related("training_creator")
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TrainingListView, self).get_context_data(**kwargs)
+        training_name = self.request.GET.get("training_name", "")
+        context["search_field"] = TrainingSearchForm(initial={
+            "training_name": training_name
+        }
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Training.objects.all().select_related("training_creator")
+        form = TrainingSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                training_name__icontains=form.cleaned_data["training_name"]
+            )
+        return queryset
 
 
 class TrainingDetailView(LoginRequiredMixin, generic.DetailView):

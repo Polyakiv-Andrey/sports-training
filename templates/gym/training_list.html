@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
     Trainings
   <a style="float: right" href="{% url 'gym:training-create' %}">+</a>
   </h1>
+  <form method="get" action="" class="form-inline">
+  {% csrf_token %}
+  {{ search_field|crispy }}
+  <input type="submit" value="🔎" class="btn-info btn">
+  </form>
   {% if training_list %}
     {% for training in training_list %}
       <ul>

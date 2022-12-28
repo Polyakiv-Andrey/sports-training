@@ -29,3 +29,12 @@ class ExerciseSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by exercise name..."})
     )
+
+
+class TrainingSearchForm(forms.Form):
+    training_name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by training name..."})
+    )

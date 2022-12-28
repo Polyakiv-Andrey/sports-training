@@ -2,7 +2,15 @@
 
 {% block content %}
   <div class="ml-3">
-  <h3>{{ training.training_name }}</h3>
+  <h3>
+    {{ training.training_name }}
+    <a style="float: right" class="btn btn-success" href="{% url 'gym:training-update' pk=training.id %}">
+      Update
+    </a>
+    <a style="float: right" class="btn btn-danger" href="{% url 'gym:training-delete' pk=training.id %}">
+      Delete
+    </a>
+  </h3>
   <p>{{ training.training_description }}</p>
   {% for exercise in training.exercises.all %}
     <ul>

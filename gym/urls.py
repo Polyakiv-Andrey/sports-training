@@ -14,6 +14,8 @@ urlpatterns = [
     path("training/", TrainingListView.as_view(), name="training-list"),
     path("training/<int:pk>/", TrainingDetailView.as_view(), name="training-detail"),
     path("training/create/", TrainingCreateView.as_view(), name="training-create"),
+    path("training/<int:pk>/update/", TrainingUpdateView.as_view(), name="training-update"),
+    path("training/<int:pk>/delete/", TrainingDeleteView.as_view(), name="training-delete"),
 ]
 
 

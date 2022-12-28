@@ -3,9 +3,9 @@
 
 {% block content %}
   <h1>{{ object|yesno:'Update,Create' }} exercise</h1>
-  <form action="" method="post" novalidate>
+  <form action="" method="post" novalidate enctype="multipart/form-data">
   {% csrf_token %}
   {{ form|crispy }}
-  <input class="btn btn-primary" type="submit" value="Create">
+  <input class="btn btn-primary" type="submit" value="Submit">
   </form>
 {% endblock %}

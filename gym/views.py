@@ -73,3 +73,15 @@ class TrainingCreateView(LoginRequiredMixin, generic.CreateView):
     model = Training
     fields = "__all__"
     success_url = reverse_lazy("gym:training-list")
+
+
+class TrainingUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Training
+    fields = "__all__"
+    success_url = reverse_lazy("gym:training-list")
+
+
+class TrainingDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Training
+    template_name = "gym/training_delete_confirm.html"
+    success_url = reverse_lazy("gym:training-list")

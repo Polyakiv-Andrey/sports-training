@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from gym.forms import AthleteCreationForm, TrainingForm
+from gym.forms import *
 from gym.models import Athlete, Exercise, Training
 
 
@@ -53,8 +53,25 @@ class AthleteDeleteView(generic.DeleteView):
 
 class ExerciseListView(LoginRequiredMixin, generic.ListView):
     model = Exercise
-    queryset = Exercise.objects.all().select_related("exercise_creator")
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ExerciseListView, self).get_context_data(**kwargs)
+        exercise_name = self.request.GET.get("exercise_name", "")
+        context["search_field"] = ExerciseSearchForm(initial={
+            "exercise_name": exercise_name
+        }
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Exercise.objects.all().select_related("exercise_creator")
+        form = ExerciseSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                exercise_name__icontains=form.cleaned_data["exercise_name"]
+            )
+        return queryset
 
 
 class ExerciseDetailView(LoginRequiredMixin, generic.DetailView):

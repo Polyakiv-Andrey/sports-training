@@ -20,3 +20,12 @@ class TrainingForm(forms.ModelForm):
     class Meta:
         model = Training
         fields = "__all__"
+
+
+class ExerciseSearchForm(forms.Form):
+    exercise_name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by exercise name..."})
+    )

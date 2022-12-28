@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from gym.forms import AthleteCreationForm
+from gym.forms import AthleteCreationForm, TrainingForm
 from gym.models import Athlete, Exercise, Training
 
 
@@ -77,15 +77,16 @@ class TrainingDetailView(LoginRequiredMixin, generic.DetailView):
 
 
 class TrainingCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Training
-    fields = "__all__"
+    form_class = TrainingForm
     success_url = reverse_lazy("gym:training-list")
+    template_name = "gym/training_form.html"
 
 
 class TrainingUpdateView(LoginRequiredMixin, generic.UpdateView):
+    form_class = TrainingForm
     model = Training
-    fields = "__all__"
     success_url = reverse_lazy("gym:training-list")
+    template_name = "gym/training_form.html"
 
 
 class TrainingDeleteView(LoginRequiredMixin, generic.DeleteView):

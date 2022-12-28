@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from gym.forms import AthleteCreationForm, TrainingForm
 from gym.models import Athlete, Exercise, Training
 
 
@@ -29,6 +30,25 @@ class AthleteListView(LoginRequiredMixin, generic.ListView):
 
 class AthleteDetailView(LoginRequiredMixin, generic.DetailView):
     model = Athlete
+
+
+class AthleteCreateView(generic.CreateView):
+    form_class = AthleteCreationForm
+    success_url = reverse_lazy("gym:index")
+    template_name = "gym/athlete_form.html"
+
+
+class AthleteUpdateView(generic.UpdateView):
+    model = Athlete
+    fields = ["first_name", "last_name", "email", "photo", "experience"]
+    success_url = reverse_lazy("gym:athletes-list")
+    template_name = "gym/athlete_form.html"
+
+
+class AthleteDeleteView(generic.DeleteView):
+    model = Athlete
+    success_url = reverse_lazy("login")
+    template_name = "gym/athlete_delete_confirm.html"
 
 
 class ExerciseListView(LoginRequiredMixin, generic.ListView):
@@ -70,6 +90,19 @@ class TrainingDetailView(LoginRequiredMixin, generic.DetailView):
 
 
 class TrainingCreateView(LoginRequiredMixin, generic.CreateView):
+    form_class = TrainingForm
+    success_url = reverse_lazy("gym:training-list")
+    template_name = "gym/training_form.html"
+
+
+class TrainingUpdateView(LoginRequiredMixin, generic.UpdateView):
+    form_class = TrainingForm
     model = Training
-    fields = "__all__"
+    success_url = reverse_lazy("gym:training-list")
+    template_name = "gym/training_form.html"
+
+
+class TrainingDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Training
+    template_name = "gym/training_delete_confirm.html"
     success_url = reverse_lazy("gym:training-list")

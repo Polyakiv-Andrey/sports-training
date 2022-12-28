@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Athlete: {{ athlete }}</h1>
+  <h1>
+    Athlete: {{ athlete }}
+  </h1>
+    {% if user.id == athlete.id %}
+    <a style="float: right" class="btn btn-success" href="{% url 'gym:athletes-update' pk=athlete.id %}">
+    Change profile
+    </a>
+  {% endif %}
+  {% if user.id == athlete.id %}
+    <a style="float: right" class="btn btn-danger" href="{% url 'gym:athletes-delete' pk=athlete.id %}">
+    Delete account
+    </a>
+  {% endif %}
   {% if athlete.experience %}
     <p>Experience: {{ athlete.experience }}</p>
   {% endif %}
@@ -9,7 +21,9 @@
     <img alt="ath-photo" src="{{ athlete.photo.url }}">
   {% endif %}
   <div class="ml-3">
+  {% if athlete.training_set.all %}
   <h3>Training from {{ athlete }}</h3>
+  {% endif %}
   {% for training in athlete.training_set.all %}
     <ul>
       <li>
@@ -25,7 +39,9 @@
   {% endfor %}
   </div>
    <div class="ml-3">
+    {% if athlete.exercise_set.all %}
   <h3>Exercise from {{ athlete }}</h3>
+   {% endif %}
   {% for exercise in athlete.exercise_set.all %}
     <ul>
       <li>

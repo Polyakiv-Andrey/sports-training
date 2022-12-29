@@ -27,6 +27,24 @@ class AthleteListView(LoginRequiredMixin, generic.ListView):
     model = Athlete
     paginate_by = 5
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(AthleteListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_field"] = AthleteSearchForm(initial={
+            "username": username
+        }
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Athlete.objects.all()
+        form = AthleteSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
+
 
 class AthleteDetailView(LoginRequiredMixin, generic.DetailView):
     model = Athlete

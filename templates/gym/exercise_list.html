@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
     Exercises
   <a style="float: right" href="{% url 'gym:exercise-create' %}">+</a>
   </h1>
+  <form method="get" action="" class="form-inline">
+  {% csrf_token %}
+  {{ search_field|crispy }}
+  <input type="submit" value="🔎" class="btn-info btn">
+  </form>
   {% if exercise_list %}
     {% for exercise in exercise_list %}
       <ul>
@@ -13,12 +19,14 @@
             {{ exercise.exercise_name }}
           </a>
           creator: {{ exercise.exercise_creator }}
+          {% if exercise.exercise_creator.id == user.id %}
           <a class="btn btn-success" href="{% url 'gym:exercise-update' pk=exercise.id %}">
             Update
           </a>
           <a class="btn btn-danger" href="{% url 'gym:exercise-delete' pk=exercise.id %}">
             Delete
           </a>
+          {% endif %}
         </li>
       </ul>
     {% endfor %}

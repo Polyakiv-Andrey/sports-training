@@ -1,6 +1,8 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -8,6 +10,18 @@ from django.views import generic
 from gym.forms import *
 from gym.models import Athlete, Exercise, Training
 
+
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = "registration/login.html"
+
+    def get_success_url(self):
+        return reverse_lazy("gym:index")
+
+
+def logout_user(request):
+    logout(request)
+    return redirect("gym:login")
 
 @login_required
 def index(request):

@@ -1,6 +1,7 @@
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -54,6 +55,11 @@ class AthleteCreateView(generic.CreateView):
     form_class = AthleteCreationForm
     success_url = reverse_lazy("gym:index")
     template_name = "gym/athlete_form.html"
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect("gym:index")
 
 
 class AthleteUpdateView(generic.UpdateView):

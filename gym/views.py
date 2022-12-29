@@ -23,6 +23,7 @@ def logout_user(request):
     logout(request)
     return redirect("gym:login")
 
+
 @login_required
 def index(request):
 
@@ -68,7 +69,7 @@ class AthleteDetailView(LoginRequiredMixin, generic.DetailView):
 class AthleteCreateView(generic.CreateView):
     form_class = AthleteCreationForm
     success_url = reverse_lazy("gym:index")
-    template_name = "gym/athlete_form.html"
+    template_name = "gym/athlete_create_form.html"
 
     def form_valid(self, form):
         user = form.save()
@@ -85,7 +86,7 @@ class AthleteUpdateView(generic.UpdateView):
 
 class AthleteDeleteView(generic.DeleteView):
     model = Athlete
-    success_url = reverse_lazy("login")
+    success_url = reverse_lazy("gym:login")
     template_name = "gym/athlete_delete_confirm.html"
 
 

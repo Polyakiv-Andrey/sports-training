@@ -19,6 +19,11 @@ body {
 .margin {
   margin: 75px;
 }
+.sizes {
+  width: 450px;
+  display: block;
+  margin: 5px;
+}
 .bg-image-vertical {
 position: relative;
 overflow: hidden;

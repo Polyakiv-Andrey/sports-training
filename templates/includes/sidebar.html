@@ -1,16 +1,53 @@
-<ul class="sidebar-nav">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-  {%  if user.is_authenticated %}
-    <li>User: <a href="{% url 'gym:athletes-detail' pk=user.id %}">{{ user.username }}</a> </li>
-    <li><a href="{% url 'logout' %}">Logout</a> </li>
-  {% else %}
-    <li><a href="{% url 'login' %}">Login</a></li>
-  {% endif %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<br>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <li><a href="{% url 'gym:index' %}">Home</a></li>
-  <li><a href="{% url 'gym:athletes-list' %}">Athletes</a></li>
-  <li><a href="{% url 'gym:exercise-list' %}">Exercises</a></li>
-  <li><a href="{% url 'gym:training-list' %}">Trainings</a></li>
-</ul>
+<div class="nav-side-menu">
+    <div class="brand">Sport-site</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <li class="center">
+                  <a href="{% url 'gym:athletes-detail' pk=user.id %}">
+                   <i class="fa fa-user fa-lg"></i> Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'gym:index' %}">
+                   <i class="fa fa-home fa-lg"></i> Home page
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'gym:athletes-list' %}">
+                   <i class="fa fa-users fa-lg"></i> Athletes
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'gym:exercise-list' %}">
+                   <i class="fa fa-trophy"></i> Exercises
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'gym:training-list' %}">
+                  <i class='fa fa-hand-grab-o'></i> Trainings
+                  </a>
+                </li>
+                 <li>
+                  <a href="{% url 'gym:logout' %}">
+                  <i class='fa fa-sign-out'></i> Logout
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>

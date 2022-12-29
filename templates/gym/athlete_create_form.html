@@ -22,16 +22,13 @@
 
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-           {% if form.error %}
-          <p>Invalid credentials</p>
-        {% endif %}
-        <form method="post" action="{% url 'gym:login' %}" class="margin">
+
+        <form action="" method="post" novalidate enctype="multipart/form-data" class="margin">
+           <h1 class="center">Registration</h1>
         {% csrf_token %}
-          <h1 class="center">Login</h1>
         {{ form|crispy }}
-        <input class="btn btn-success size" type="submit" value="Login">
-        <input type="hidden" name="next" value="{{ next }}">
-          <a class="btn btn-primary size" href="{% url 'gym:athletes-create' %}">Registration</a>
+        <input class="btn btn-success sizes" type="submit" value="Submit">
+          <a class="btn btn-primary sizes" href="{% url 'gym:login' %}">Login page</a>
         </form>
 
         </div>

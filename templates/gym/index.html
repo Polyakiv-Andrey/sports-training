@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
+{#{% block styles %}#}
+{#  <{% load static %}#}
+{#<link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+{#{% endblock %}#}
 {% block content %}
-<h1 >Gym</h1>
-  <p>Welcome in the best gym</p>
-  <h2>We have</h2>
-  <ul>
-    <li>num_athletes: {{ num_athletes }}</li>
-    <li>num_exercises: {{ num_exercises }}</li>
-    <li>num_trainings: {{ num_trainings }}</li>
-  </ul>
+<h1>Gym</h1>
+  <p >Welcome in the best gym</p>
+  <h2 >We have</h2>
+
+    <div>
+    <div>num_athletes: {{ num_athletes }}</div>
+    <div>num_exercises: {{ num_exercises }}</div>
+    <div>num_trainings: {{ num_trainings }}</div>
+    </div>
+
 {% endblock %}
+

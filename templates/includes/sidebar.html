@@ -1,53 +1,46 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="nav-side-menu">
-    <div class="brand">Sport-site</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-        <div class="menu-list">
-
-            <ul id="menu-content" class="menu-content collapse out">
-                <li class="center">
-                  <a href="{% url 'gym:athletes-detail' pk=user.id %}">
-                   <i class="fa fa-user fa-lg"></i> Profile
-                  </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar10">
+            <ul class="navbar-nav nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:athletes-detail' pk=user.id %}">
+                  <i class="fa fa-user" aria-hidden="true"></i> Profile
+                    </a>
                 </li>
-                <li>
-                  <a href="{% url 'gym:index' %}">
-                   <i class="fa fa-home fa-lg"></i> Home page
-                  </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:index' %}">
+                      <i class="fa fa-home"></i> Home page
+                    </a>
                 </li>
-                <li>
-                  <a href="{% url 'gym:athletes-list' %}">
-                   <i class="fa fa-users fa-lg"></i> Athletes
-                  </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:athletes-list' %}">
+                      <i class="fa fa-users"></i> Athletes
+                    </a>
                 </li>
-                <li>
-                  <a href="{% url 'gym:exercise-list' %}">
-                   <i class="fa fa-trophy"></i> Exercises
-                  </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:exercise-list' %}">
+                      <i class="fa fa-trophy"></i> Exercises
+                    </a>
                 </li>
-                <li>
-                  <a href="{% url 'gym:training-list' %}">
-                  <i class='fa fa-hand-grab-o'></i> Trainings
-                  </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:training-list' %}">
+                      <i class='fa fa-hand-grab-o'></i> Trainings
+                    </a>
                 </li>
-                 <li>
-                  <a href="{% url 'gym:logout' %}">
-                  <i class='fa fa-sign-out'></i> Logout
-                  </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Polyakiv-Andrey/sports-training">
+                      <i class="fa fa-github"></i> GitHub
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gym:logout' %}">
+                      <i class='fa fa-sign-out'></i> Logout
+                    </a>
                 </li>
             </ul>
-     </div>
-</div>
+        </div>
+    </div>
+</nav>

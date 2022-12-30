@@ -14,7 +14,16 @@
   {% if training_list %}
     {% for training in training_list %}
       <ul>
-        <li><a href="{% url 'gym:training-detail' pk=training.id %}"> {{ training.training_name }} </a> {{ training.training_description }}</li>
+        <li>
+          <a href="{% url 'gym:training-detail' pk=training.id %}">
+            {{ training.training_name }}
+          </a>
+          {% for exercise in training.exercises.all %}
+            <ul>
+            <li>{{ exercise }}</li>
+            </ul>
+          {% endfor %}
+        </li>
       </ul>
     {% endfor %}
   {% else %}

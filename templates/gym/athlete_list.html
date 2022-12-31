@@ -10,7 +10,7 @@
    <div class="athlete-list-fon athlete-list-centre">
    <div class="athlete-list-centre">
   <h1 class="athlete-title">Athletes</h1>
-  <form method="get" action="" class="form-inline">
+  <form method="get" action="" class="form-inline" style="margin: 0 0 0 50px">
   {% csrf_token %}
   {{ search_field|crispy }}
   <input type="submit" value="🔎" class="btn-info btn">
@@ -20,22 +20,23 @@
 
   {% if athlete_list %}
     {% for athlete in athlete_list %}
-      <ul>
-        <li>
-        <div class="athlete-container">
-          <a href="{% url 'gym:athletes-detail' pk=athlete.pk %}"> 
+      <ul style="list-style: none; margin: 5px 0 5px 0">
+        <li style="background: 	#E8E8E8">
+        <div class="athlete-container" style="display: flex; padding: 10px 0 0 10px">
+          <div>
+          {% if athlete.photo %}
+          <img style="width: 80px; height: 80px" src="{{ athlete.photo.url }}" alt="">
+          {% else %}
+          <img style="width: 80px; height: 80px;" alt="" src="/static/photos/empty_staff.png">
+          {% endif %}
+        </div>
+        <div>
+          <p style="padding: 30px 0 0 40px">
+            <a href="{% url 'gym:athletes-detail' pk=athlete.pk %}">
             {{ athlete }} 
           </a>
-          {% if athlete.photo %}
-          <img class="athlete-photo" src="{{ athlete.photo.url }}" alt="">
-          {% else %}
-          <img class="athlete-photo" alt="" src="/static/photos/empty_staff.png">
-          {% endif %}
-          {% if athlete.experience %}
-          {{ athlete.experience }}
-          {% else %}
-          I have just started
-          {% endif %}
+          </p>
+        </div>
         </div>
         </li>
       </ul>
@@ -48,7 +49,7 @@
    </div>
 
 {#   --paginator--#}
-   <div class="paginator-centre ">
+   <div style="margin: 0 0 0 100px">
 {% load query_transform %}
 {% if is_paginated %}
     <ul class="pagination">

@@ -2,10 +2,10 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} training</h1>
-  <form action="" method="post" novalidate>
+  <h1 style="margin: 30px 0 0 70vh">{{ object|yesno:"Update,Create" }} training</h1>
+  <form action="" method="post" novalidate style="width: 800px; margin-left: 40vh;">
   {% csrf_token %}
   {{ form|crispy }}
-  <input class="btn btn-primary" type="submit" value="Submit">
+  <input class="btn btn-primary" type="submit" value="Submit" style="margin: 0 0 30px 40vh ">
   </form>
 {% endblock %}

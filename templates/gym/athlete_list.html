@@ -1,20 +1,75 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
+{% block styles %}
+  <link href="/static/css/athlete_list.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-  <h1>Athletes</h1>
-  <form method="get" action="" class="form-inline">
+  <div class="athlete-list-page">
+   <div class="athlete-list-fon athlete-list-centre">
+   <div class="athlete-list-centre">
+  <h1 class="athlete-title" style="padding-left: 60px">Athletes</h1>
+  <form method="get" action="" class="form-inline" style="margin: 0 0 0 50px">
   {% csrf_token %}
   {{ search_field|crispy }}
   <input type="submit" value="🔎" class="btn-info btn">
   </form>
+
+   <div>
+
   {% if athlete_list %}
     {% for athlete in athlete_list %}
-      <ul>
-        <li><a href="{% url 'gym:athletes-detail' pk=athlete.pk %}"> {{ athlete }} </a></li>
+      <ul style="list-style: none; margin: 5px 0 5px 0">
+        <li style="background: 	#E8E8E8">
+        <div class="athlete-container" style="display: flex; padding: 10px 0 0 10px">
+          <div>
+          {% if athlete.photo %}
+          <img style="width: 80px; height: 80px" src="{{ athlete.photo.url }}" alt="">
+          {% else %}
+          <img style="width: 80px; height: 80px;" alt="" src="/static/photos/empty_staff.png">
+          {% endif %}
+        </div>
+        <div>
+          <p style="padding: 30px 0 0 40px">
+            <a href="{% url 'gym:athletes-detail' pk=athlete.pk %}">
+            {{ athlete }} 
+          </a>
+          </p>
+        </div>
+        </div>
+        </li>
       </ul>
     {% endfor %}
   {% else %}
     <p>Unfortunately athletes have not registered yet</p>
   {% endif %}
+   </div>
+
+   </div>
+
+{#   --paginator--#}
+   <div style="margin: 0 0 0 100px">
+{% load query_transform %}
+{% if is_paginated %}
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page-link">←</a>
+        </li>
+      {% endif %}
+    <li class="page-item active">
+      <span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    </li>
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a href="?{% query_transform request page=page_obj.next_page_number %}" class="page-link">→</a>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
+</div>
+{#     --paginator--#}
+   </div>
+  </div>
 {% endblock %}

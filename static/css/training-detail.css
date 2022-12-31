@@ -1,0 +1,9 @@
+.center-title {
+    margin: 30px 0 30px 50vh;
+    text-transform: uppercase;
+    color: #FCA205;
+    font-family: 'Lobster', serif
+}
+.img-size-training {
+    width: 600px;
+}

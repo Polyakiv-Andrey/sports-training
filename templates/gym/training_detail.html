@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
+{% block styles %}
+   <link href="/static/css/training-detail.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <div class="ml-3">
-  <h3>
+  <h3 class="center-title">
     {{ training.training_name }}
+  </h3>
+
      {% if training.training_creator.id == user.id %}
     <a style="float: right" class="btn btn-success" href="{% url 'gym:training-update' pk=training.id %}">
       Update
@@ -12,14 +18,26 @@
       Delete
     </a>
     {% endif %}
-  </h3>
-  <p>{{ training.training_description }}</p>
+
+  <p class="description">{{ training.training_description }}</p>
   {% for exercise in training.exercises.all %}
-    <ul>
+    <ul style="list-style-type: none">
       <li>
-        <p><strong>{{ exercise.exercise_name }}</strong></p>
-        <p>{{ exercise.description }}</p>
-         <img alt="ath-photo" src="{{ exercise.picture.url }}">
+           <div class="container">
+                <div class="row align-items-center flex-row-reverse" style="border: #020203 solid">
+                    <div class="col-lg-3">
+                        <div style="padding: 0 30px 0 0">
+                            <h3 class="dark-color"><strong>Exercise:</strong> {{ exercise.exercise_name }}</h3>
+                            <h6><strong>Description:</strong>{{ exercise.description }}</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div>
+                            <img class="img-size-training" alt="" src="{{ exercise.picture.url }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
       </li>
     </ul>
    {% endfor %}

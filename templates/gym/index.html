@@ -1,22 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{#{% block styles %}#}
-{#  <{% load static %}#}
-{#<link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
-{#{% endblock %}#}
 {% block content %}
-{#  <div class="background-home-page-picture">#}
-{#    <div class="title-content">#}
-{#      <h1 >Gym</h1>#}
-{#    </div>#}
-{##}
-{##}
-{#    <div class="home-page-content">#}
-{#    <div class="home-page-block h-col-1">num_athletes: {{ num_athletes }}</div>#}
-{#    <div class="home-page-block h-col-2">num_exercises: {{ num_exercises }}</div>#}
-{#    <div class="home-page-block h-col-3">num_trainings: {{ num_trainings }}</div>#}
-{#    </div>#}
-{#  </div>#}
   <div class="home-page">
     <div class="home-page-top-section">
       <h1 class="title">Gym</h1>
@@ -25,20 +9,23 @@
     <div class="home-page-content">
       <div class="home-page-block h-col-1">
         <div class="block-content">
-          <h3 class="sub-title">{{ num_athletes }}</h3>
-          <p class="description-1">  Athletes registered</p>
+          <img src="{% static '/photos/man-muscles-and-fitness-16863.svg' %}" alt="" class="block-content-icon">
+          <h3 class="subtitle">10</h3>
+          <p class="description">Athletes registered</p>
         </div>
       </div>
       <div class="home-page-block h-col-2">
         <div class="block-content">
-          <h3 class="sub-title">{{ num_exercises }}</h3>
-          <p class="description-1">Exercises implemented</p>
+          <img src="{% static '/photos/strong-man-arm-and-dumbbell-16869.svg' %}" alt="" class="block-content-icon">
+          <h3 class="subtitle">11</h3>
+          <p class="description">Exercises implemented</p>
         </div>
       </div>
       <div class="home-page-block h-col-3">
         <div class="block-content">
-          <h3 class="sub-title">{{ num_trainings }}</h3>
-          <p class="description-1">Trainings created</p>
+          <img src="{% static '/photos/man-and-gymnastic-rings-16878.svg' %}" alt="" class="block-content-icon">
+          <h3 class="subtitle">5</h3>
+          <p class="description">Trainings created</p>
         </div>
       </div>
       </div>

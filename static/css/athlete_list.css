@@ -1,0 +1,32 @@
+.athlete-list-page {
+  height: 93vh;
+  background-image: url("/static/photos/athlete-list-fone.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+}
+
+.athlete-title {
+  padding: 5px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  color: #DA70D6;
+  text-transform: uppercase;
+  font-size: 54px;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 5px rgba(206,206,206,0.74);
+
+}
+
+.athlete-container {
+  height: 100px;
+  width: 100px;
+  display: flex;
+}
+.athlete-photo {
+  width: 100px;
+}

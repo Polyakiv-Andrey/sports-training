@@ -1,28 +1,37 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
+{% block styles %}
+   <link href="/static/css/training-list.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-  <h1>
+  <div class="block-color-1" style="padding: 0 0 0 65vh">
+  <h1 style="padding-left: 50px" class="training-title">
     Trainings
-  <a style="float: right" href="{% url 'gym:training-create' %}">+</a>
+  <a style="float: right; font-size: 34px" class="btn btn-primary" href="{% url 'gym:training-create' %}">+</a>
   </h1>
-  <form method="get" action="" class="form-inline">
+  <form method="get" action="" class="form-inline" style="padding-left: 70px">
   {% csrf_token %}
   {{ search_field|crispy }}
   <input type="submit" value="🔎" class="btn-info btn">
   </form>
   {% if training_list %}
     {% for training in training_list %}
-      <ul>
-        <li>
-          <a href="{% url 'gym:training-detail' pk=training.id %}">
+      <ul style="list-style: none; margin: 20px 0 20px 0 ;">
+        <li >
+        <div style="background: #C8C8C8; width: 350px">
+          <a style="text-transform: uppercase; padding-left: 30px" href="{% url 'gym:training-detail' pk=training.id %}">
             {{ training.training_name }}
           </a>
+        </div>
+        <div style="background: #E0E0E0; width: 350px">
           {% for exercise in training.exercises.all %}
             <ul>
-            <li>{{ exercise }}</li>
+            <li style="padding-left: 60px">{{ exercise }}</li>
             </ul>
           {% endfor %}
+        </div>
         </li>
       </ul>
     {% endfor %}
@@ -31,7 +40,7 @@
   {% endif %}
 
   {#   --paginator--#}
-   <div class="paginator-centre ">
+   <div class="paginator-centre " style="padding-left: 150px">
 {% load query_transform %}
 {% if is_paginated %}
     <ul class="pagination">
@@ -52,5 +61,5 @@
   {% endif %}
 </div>
 {#     --paginator--#}
-
+</div>
 {% endblock %}

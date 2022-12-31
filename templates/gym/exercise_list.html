@@ -7,13 +7,13 @@
 {% block content %}
   <div class="block-color">
   <div style="padding: 0 0 0 60vh">
-  <h1>
+  <h1 style="padding-left: 70px" class="exercise-title">
     Exercises
-  <a class="btn btn-primary" style="float: right; font-weight: bold" href="{% url 'gym:exercise-create' %}">
+  <a class="btn btn-primary" style="float: right;" href="{% url 'gym:exercise-create' %}">
     +
   </a>
   </h1>
-  <form method="get" action="" class="form-inline">
+  <form method="get" action="" class="form-inline" style="padding-left: 70px">
   {% csrf_token %}
   {{ search_field|crispy }}
   <input type="submit" value="🔎" class="btn-info btn">
@@ -50,7 +50,7 @@
   {% endif %}
 
   {#   --paginator--#}
-   <div class="paginator-centre ">
+   <div class="paginator-centre " style="padding-left: 150px">
 {% load query_transform %}
 {% if is_paginated %}
     <ul class="pagination">

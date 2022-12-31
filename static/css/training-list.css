@@ -1,25 +1,14 @@
-.block-color {
+.block-color-1 {
     height: 93vh;
-    background-image: url("/static/photos/exercise-fon.jpg");
+    background-image: url("/static/photos/training-fon.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     background-color: aquamarine;
+
 }
-.list-correct {
-    list-style: none;
-}
-.block-correct {
-    display: flex;
-    margin-top: 10px;
-    background: #E8E8E8;
-    width: 300px;
-}
-.picture-change {
-    height: 90px;
-}
-.exercise-title {
+.training-title {
     padding: 5px;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;

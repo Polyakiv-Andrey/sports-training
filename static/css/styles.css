@@ -14,7 +14,7 @@
 }
 
 .home-page {
-  height: 100vh;
+  height: 95vh;
 }
 
 .home-page-top-section {
@@ -31,14 +31,14 @@
 }
 
 .title {
+  padding: 5px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   color: #fff;
   text-transform: uppercase;
   font-size: 54px;
   letter-spacing: 3px;
   text-shadow: 3px 3px 5px rgba(206,206,206,0.74);
-  padding: 5px;
-  border: 1px solid #fff;
-  border-radius: 5px;
 
 }
 
@@ -56,33 +56,57 @@
 }
 
 .block-content {
-  /*width: 50%;*/
-  /*margin: 0 auto;*/
   padding: 0 30px;
   text-align: center;
-  color: white;
+  color: #fff;
+}
+
+.block-content-icon {
+  width: 120px;
+  object-position: center;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px 0 rgba(255,255,255,1);
+}
+
+.subtitle {
+  text-shadow: 3px 3px 5px rgba(206,206,206,0.74);
+  font-size: 54px;
+}
+
+.description {
+  font-size: 32px;
+  letter-spacing: 1px;
 }
 
 .h-col-1 {
-  background-color: #1c1f3b;
+  background-color: rgb(34, 2, 49);
 }
 
 .h-col-2 {
- background-color: #403a67;
+  background-color: rgb(56, 19, 75);
 }
 
 .h-col-3 {
-  background-color: #755da0;
+  background-color: rgb(90, 48, 90);
 }
-.sub-title {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 54px;
-  letter-spacing: 3px;
-  text-shadow: 3px 3px 5px rgba(206,206,206,0.74);
-  padding: 5px;
 
-}
-.description-1 {
-  font-size: 36px;
+@media (max-width: 600px) {
+  .home-page-content {
+    flex-direction: column;
+  }
+
+  .home-page-block {
+    width: 100%;
+    padding: 40px 10px;
+  }
+
+  .subtitle {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 26px;
+  }
 }

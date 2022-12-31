@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
+{% block styles %}
+  <link href="/static/css/exercise-list.css" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
+  <div class="block-color">
+  <div style="padding: 0 0 0 60vh">
   <h1>
     Exercises
-  <a style="float: right" href="{% url 'gym:exercise-create' %}">+</a>
+  <a class="btn btn-primary" style="float: right; font-weight: bold" href="{% url 'gym:exercise-create' %}">
+    +
+  </a>
   </h1>
   <form method="get" action="" class="form-inline">
   {% csrf_token %}
@@ -13,12 +20,18 @@
   </form>
   {% if exercise_list %}
     {% for exercise in exercise_list %}
-      <ul>
+      <ul class="list-correct">
         <li>
-          <a href="{% url 'gym:exercise-detail' pk=exercise.id %}">
+        <div class="block-correct">
+          <div>
+          <img class="picture-change" src="{{ exercise.picture.url }}" alt="">
+          </div>
+          <div style="padding: 30px 0 0 30px">
+         <p><a href="{% url 'gym:exercise-detail' pk=exercise.id %}">
             {{ exercise.exercise_name }}
-          </a>
-          creator: {{ exercise.exercise_creator }}
+           </a></p>
+             </div>
+        <div style="margin: 0 0 0 50px">
           {% if exercise.exercise_creator.id == user.id %}
           <a class="btn btn-success" href="{% url 'gym:exercise-update' pk=exercise.id %}">
             Update
@@ -27,6 +40,8 @@
             Delete
           </a>
           {% endif %}
+         </div>
+        </div>
         </li>
       </ul>
     {% endfor %}
@@ -56,5 +71,7 @@
   {% endif %}
 </div>
 {#     --paginator--#}
-
+</div>
+  </div>
 {% endblock %}
+

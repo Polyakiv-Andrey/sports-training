@@ -29,12 +29,12 @@ Powerful admin panel for advanced managing
 
 ## Demo
 
-![website interface](home-page.png)
-![website interface](login.png)
-![website interface](athlete-list.png)
-![website interface](exercise-list.png)
-![website interface](training-list.png)
-![website interface](profile.png)
-![website interface](exercise-detail.png)
-![website interface](training-detail.png)
-![website interface](delete-page.png)
+![website interface](readme-photos/home-page.png)
+![website interface](readme-photos/login.png)
+![website interface](readme-photos/athlete-list.png)
+![website interface](readme-photos/exercise-list.png)
+![website interface](readme-photos/training-list.png)
+![website interface](readme-photos/profile.png)
+![website interface](readme-photos/exercise-detail.png)
+![website interface](readme-photos/training-detail.png)
+![website interface](readme-photos/delete-page.png)

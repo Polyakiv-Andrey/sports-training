@@ -7,7 +7,7 @@ Here you can implement your own trainings and exercises for them.
 
 
 ## Check it out!
-SportsTraining project deployed to Heroku
+[SportsTraining project deployed to render](https://gym-s6rc.onrender.com/login/)
 
 ## Installation
 Python3 must be already installed

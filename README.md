@@ -8,6 +8,8 @@ Here you can implement your own trainings and exercises for them.
 
 ## Check it out!
 [SportsTraining project deployed to render](https://gym-s6rc.onrender.com/login/)
+#### Login: Visitor
+#### Password: zdrtyf8454
 
 ## Installation
 Python3 must be already installed
@@ -22,10 +24,10 @@ python manage.py runserver  # starts Django Server
 ```
 
 ## Features
-Authentication functionality for Athlete/User
-Registration functionality for Athlete/User
-Managing athletes exercises & trainings directly from website interface
-Powerful admin panel for advanced managing
+* Authentication functionality for Athlete/User
+* Registration functionality for Athlete/User
+* Managing athletes exercises & trainings directly from website interface
+* Powerful admin panel for advanced managing
 
 ## Demo
 

@@ -24,10 +24,10 @@ python manage.py runserver  # starts Django Server
 ```
 
 ## Features
-Authentication functionality for Athlete/User
-Registration functionality for Athlete/User
-Managing athletes exercises & trainings directly from website interface
-Powerful admin panel for advanced managing
+* Authentication functionality for Athlete/User
+* Registration functionality for Athlete/User
+* Managing athletes exercises & trainings directly from website interface
+* Powerful admin panel for advanced managing
 
 ## Demo
 

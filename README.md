@@ -8,6 +8,8 @@ Here you can implement your own trainings and exercises for them.
 
 ## Check it out!
 [SportsTraining project deployed to render](https://gym-s6rc.onrender.com/login/)
+#### Login: Visitor
+#### Password: zdrtyf8454
 
 ## Installation
 Python3 must be already installed

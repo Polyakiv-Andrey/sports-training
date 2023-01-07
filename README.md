@@ -19,7 +19,7 @@ git clone git@github.com:Polyakiv-Andrey/sports-training.git
 cd SportsTraining
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirement.txt
 python manage.py runserver  # starts Django Server
 ```
 
